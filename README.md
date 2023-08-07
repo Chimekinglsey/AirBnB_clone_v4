@@ -158,4 +158,4 @@ Chime Kingsley - onlinekingsley@gmail.com/Chimekinglsey@github.com
 Maskoli Favour - Milesmotigo@github.com
 Second part of Airbnb
 ## License
-Public Domain. No copy write protection. 
+Public Domain. No copy write protection 

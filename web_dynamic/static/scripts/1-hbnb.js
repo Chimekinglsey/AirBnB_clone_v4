@@ -41,4 +41,3 @@ function updatedNames(){
         $('.amenities h4').html(names)
     }
 });
-
