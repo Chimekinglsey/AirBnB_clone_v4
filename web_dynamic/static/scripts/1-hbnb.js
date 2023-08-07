@@ -1,49 +1,44 @@
 $(function() {
     $('ul li input[type="checkbox"]').css("margin-right", '10px');
     const myList = [];
-
     $('ul li input[type="checkbox"]').change(pushList);
 
-    function pushList() {
-        const data_id = $(this).data('id');
-        const data_name = $(this).data('name');
-        
-        // Check if the checkbox is checked
-        if ($(this).prop('checked')) {
-            let exists = false;
+    function pushList(){
+        const dataId = $(this).data('id');
+        const dataName = $(this).data('name');
 
-            for (let [index, item] of myList.entries()) {
-                if (item[data_name] === data_id) {
-                    exists = true;
-                    myList.splice(index, 1); // Remove existing entry
+        if ($(this).prop('checked'))
+        {
+            for (let item=0; item <myList.length; item++){
+                if(myList[item][dataName] === dataId)
+                {
+                    myList.splice(item, 1)
                     break;
                 }
             }
-
-            if (!exists) {
-                const newItem = {};
-                newItem[data_name] = data_id;
-                myList.push(newItem);
-            }
-        } else {
-            for (let [index, item] of myList.entries()) {
-                if (item[data_name] === data_id) {
-                    myList.splice(index, 1); // Remove unchecked entry
+           const newItem = {};
+            newItem[dataName] = dataId;
+            myList.push(newItem)
+        }
+        else{
+            for(let item=0; item<myList.length; item++)
+            {
+                if(myList[item][dataName] === dataId){
+                    myList.splice(item, 1)
                     break;
                 }
             }
         }
-
-        updateResultDiv();
+        updatedNames();
     }
-
-    function updateResultDiv() {
-        let resultHtml = '';
-        for (let item of myList) {
-            for (let key in item) {
-                resultHtml += key+', ';
-            }
+function updatedNames(){
+    let names = ""
+     for (let item of myList)
+        {
+            for (let innerItem in item) 
+                names += innerItem + ", ";
         }
-        $('.amenities h4').html(resultHtml);
+        $('.amenities h4').html(names)
     }
 });
+
